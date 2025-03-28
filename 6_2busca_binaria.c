@@ -17,7 +17,7 @@ int busca_binaria(int vet[], int ini, int fim, int x) {
 int main() {
     //criar e alimentar o vetor bigvet com valores em ordem crescente(a order esta cargo do usuario).
     int i,x = 0,resp,bigvet[100];
-    for(i = 0; i < sizeof(bigvet); i++) {
+    for(i = 0; i < sizeof(bigvet)/4; i++) {
         scanf("%d",&x);
         if(x < 0)
             break;
