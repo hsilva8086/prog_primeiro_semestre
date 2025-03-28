@@ -11,7 +11,7 @@ int busca(int vet[], int n, int x) {
 
 int main() {
     int i,x = 0,resp,bigvet[100];
-    for(i=0;i<sizeof(bigvet);i++){
+    for(i=0;i<sizeof(bigvet)/4;i++){
         scanf("%d",&x);
         if(x < 0)
             break;
