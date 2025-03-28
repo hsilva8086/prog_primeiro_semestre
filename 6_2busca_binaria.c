@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int busca_binaria(int vet[], int ini, int fim, int x) {
     int meio;
