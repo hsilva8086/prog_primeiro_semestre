@@ -5,15 +5,15 @@ int busca_binaria(int vet[], int n, int x) {
     fim = n;
     
     for (i=0; i<fim; i++) {
+        printf("%d %d\n", ini, fim-1);
         meio = (ini + fim) / 2;
-        printf("%d %d\n", ini, fim);
         if(vet[i] == x) {
             return i;
         }
         if (x < meio){
             fim = meio;
         } else {
-            inicio = meio;
+            ini = meio;
         }
     }
     return -1;
