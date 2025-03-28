@@ -1,12 +1,10 @@
 #include <stdio.h>
 
-int determineIndiceDoMenor(int vet[], int ini, int fim){
+int determineIndiceDoMenor(int vet[], int ini, int fim, int menor){
     int i,aux;
-    int menor = vet[0];
-    for(i = 1; i < fim; i++){
+    for(i = ini; i < fim; i++){
         if(vet[i] < menor) {
-            menor = vet[i];
-            printf("%d ",i);
+            menor = i;
         } else {
             continue;
         }
@@ -15,14 +13,14 @@ int determineIndiceDoMenor(int vet[], int ini, int fim){
 }
     
 int main() {
-    int vet[5] = { 12, 3, 9, 3, 26 };
-    int menor;
+    int vet[5] = { 1, 5, 2, 0, 1 };
+    int menor = vet[0];
     int ini = 0;
     int fim = sizeof(vet)/4-1;
     int j,k;
-    for(j = 0;j<fim;j++) {
-        menor = determineIndiceDoMenor(vet, ini,fim);
-        printf("%d\n",menor);        
+    for(j = 0; j<fim ; j++) {
+        menor = determineIndiceDoMenor(vet, ini,fim, menor);
+        printf("%d %d\n",menor, vet[menor]);        
     }
     for(k = 0;k<=fim;k++){
         printf("%d ",vet[k]);        
