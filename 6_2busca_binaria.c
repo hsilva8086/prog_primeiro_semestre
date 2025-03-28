@@ -1,28 +1,24 @@
 #include <stdio.h>
-int busca_binaria(int vet[], int n, int x) {
-    int i,ini,fim,meio;
-    ini = 0;
-    fim = n;
-    
-    for (i=0; i<fim; i++) {
-        printf("%d %d\n", ini, fim-1);
-        meio = (ini + fim) / 2;
-        if(vet[i] == x) {
-            return i;
-        }
-        if (x < meio){
-            fim = meio;
-        } else {
-            ini = meio;
-        }
-    }
-    return -1;
-}
+#include <stdlib.h>
 
+int busca_binaria(int vet[], int ini, int fim, int x) {
+    int meio;
+    meio = (ini + fim) / 2;
+    if(ini>fim) return -1; //ponto de parada
+    printf("%d %d\n", ini, fim);
+    if(vet[meio] == x) return meio; //ponto de parada
+
+    if(x<vet[meio]){
+        busca_binaria(vet,ini, meio-1, x);
+    } else if(x>vet[meio]){
+        busca_binaria(vet,meio+1, fim, x);
+    }
+}
+    
 int main() {
     //criar e alimentar o vetor bigvet com valores em ordem crescente(a order esta cargo do usuario).
     int i,x = 0,resp,bigvet[100];
-    for(i = 0; i < sizeof(bigvet); i++){
+    for(i = 0; i < sizeof(bigvet); i++) {
         scanf("%d",&x);
         if(x < 0)
             break;
@@ -31,11 +27,13 @@ int main() {
     }
     //rotina de busca dos valores em busca_binaria ate que um valor negativo seja informado.
     int y = 0;
+    int ini = 0;
+    int fim = i-1;
     while (y>=0) {
         scanf("%d",&y);
         if(y <= 0) break;
-        resp = busca_binaria(bigvet,i,y);
-        printf(" %d ",resp);
+        resp = busca_binaria(bigvet,ini,fim,y);
+        printf("%d\n",resp);
     }
     return 0;
 }
