@@ -1,44 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int determineIndiceDoMenor(int vet[], int ini, int fim){
-    int i,menor = 0;
+int determineIndiceDoMenor(int vet[], int ini, int fim) {
+    int i,menor, aux;
     for(i = ini; i <= fim; i++){
-        if(vet[i] < vet[menor]) {
+        if(vet[i] < vet[ini]) {
             menor = i;
-        } else {
-            continue;
         }
     }
+    printf("pos:%d|%d %d\n",ini, menor, vet[menor]);
+   // printf("A=> ini:%d menor:%d |",vet[ini], vet[menor]);
+    if(vet[menor] < vet[ini]){
+        aux = vet[ini];
+        vet[ini] = vet[menor];
+        vet[menor] = aux;
+    }
+    //printf("B=> ini:%d menor:%d |",vet[ini], vet[menor]);
     return menor;
 }
     
 int main() {
-    int vet[5] = { 1, 5, 2, 0, -1 };
+    int vet[5] = { 1, 5, 2, 2, 1 };
     int j,k;
     int aux;
-    int menor = vet[0];
-    int xmenor = menor;
     int ini = 0;
     int fim = sizeof(vet)/4-1;
     
     //bloco de repeticao para ordenar o vetor
-    for(k=ini;k<=fim;k++) {
-        xmenor = determineIndiceDoMenor(vet, k, fim);
-        printf("%d %d\n",xmenor, vet[xmenor]); 
-    
-        if(xmenor != menor){
-            aux = vet[k];
-        
-            vet[k] = vet[xmenor];
-            vet[xmenor] = aux;
-        }
-    }
+    ini = 0;
+    while(ini <= fim)
+        determineIndiceDoMenor(vet, ini++, fim);
     //fim do bloco de repeticao
     
     //imprimir o vetor
-    for(j = 0; j <= fim; j++){
-        printf("%d, ",vet[j]);
+    printf("\n");
+    for(j = 0; j <= fim; j++) { 
+        printf("%d ",vet[j]);
     }
         
     return 0;
