@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 void determineIndiceDoMenor(int vetor[], int n) {
-    int i, j, indiceMenor, temp;
+    int i, j, indiceMenor, aux;
     printf("\n");
     for (i = 0; i < n; i++) {
-        // Encontra o índice do menor elemento no subvetor não ordenado
+        // Encontrar o índice do menor elemento em vetor[]
         indiceMenor = i;
         for (j = i + 1; j <= n; j++) {
             if (vetor[j] < vetor[indiceMenor]) {
@@ -13,11 +13,11 @@ void determineIndiceDoMenor(int vetor[], int n) {
             }
         }
         printf("%d %d\n",indiceMenor,vetor[indiceMenor]);
-        // Troca o menor elemento encontrado com o primeiro elemento do subvetor não ordenado
+        // Realiza a troca do menor encontrado com o primeiro elemento do subvetor(novo indice eu quero dizer)
         if (indiceMenor != i) {
-            temp = vetor[i];
+            aux = vetor[i];
             vetor[i] = vetor[indiceMenor];
-            vetor[indiceMenor] = temp;
+            vetor[indiceMenor] = aux;
         }
     }
 }
