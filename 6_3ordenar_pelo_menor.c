@@ -1,31 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int determineIndiceDoMenor(int vet[], int ini, int fim) {
-	int i,menor, aux;
-	for(i = ini; i <= fim; i++) {
-		if(vet[i] < vet[ini]) {
-			menor = i;
-		} else {
-			menor = ini;
-		}
-	}
-
-	printf("%d %d\n",menor, vet[menor]);
-
-	if(vet[menor] < vet[ini]) {
-		aux = vet[ini];
-		vet[ini] = vet[menor];
-		vet[menor] = aux;
-	}
-
-	return menor;
+void determineIndiceDoMenor(int vetor[], int n) {
+    int i, j, indiceMenor, temp;
+    printf("\n");
+    for (i = 0; i < n; i++) {
+        // Encontra o índice do menor elemento no subvetor não ordenado
+        indiceMenor = i;
+        for (j = i + 1; j <= n; j++) {
+            if (vetor[j] < vetor[indiceMenor]) {
+                indiceMenor = j;
+            }
+        }
+        printf("%d %d\n",indiceMenor,vetor[indiceMenor]);
+        // Troca o menor elemento encontrado com o primeiro elemento do subvetor não ordenado
+        if (indiceMenor != i) {
+            temp = vetor[i];
+            vetor[i] = vetor[indiceMenor];
+            vetor[indiceMenor] = temp;
+        }
+    }
 }
 
 int main() {
 	int *vet;
 	int i,j,n;
-	int ini = 0;
 	int fim;
 
 	scanf("%d",&n);
@@ -35,14 +34,11 @@ int main() {
     }
     
 	//bloco de repeticao para ordenar o vetor.
-	ini = 0;
 	fim = n-1;
-	while(ini < fim) {
-		determineIndiceDoMenor(vet, ini++, fim);
-	}
+	determineIndiceDoMenor(vet, fim);
 	//fim do bloco de repeticao.
 
-	//imprimir o vetor.
+	//imprimir o vetor ordenado.
 	printf("\n");
 	for(j = 0; j <= fim; j++)
 		printf("%d ",vet[j]);
