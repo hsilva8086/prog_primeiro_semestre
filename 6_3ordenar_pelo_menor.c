@@ -3,12 +3,15 @@
 
 int determineIndiceDoMenor(int vet[], int ini, int fim) {
     int i,menor, aux;
-    for(i = ini; i <= fim; i++){
+    for(i = ini; i <= fim; i++) {
         if(vet[i] < vet[ini]) {
             menor = i;
+        } else {
+            menor = ini;
         }
     }
-    printf("pos:%d|%d %d\n",ini, menor, vet[menor]);
+
+    printf("%d %d\n",menor, vet[menor]);
    // printf("A=> ini:%d menor:%d |",vet[ini], vet[menor]);
     if(vet[menor] < vet[ini]){
         aux = vet[ini];
@@ -21,22 +24,20 @@ int determineIndiceDoMenor(int vet[], int ini, int fim) {
     
 int main() {
     int vet[5] = { 1, 5, 2, 2, 1 };
-    int j,k;
-    int aux;
+    int j;
     int ini = 0;
     int fim = sizeof(vet)/4-1;
     
     //bloco de repeticao para ordenar o vetor
     ini = 0;
-    while(ini <= fim)
+    while(ini < fim)
         determineIndiceDoMenor(vet, ini++, fim);
     //fim do bloco de repeticao
     
     //imprimir o vetor
     printf("\n");
-    for(j = 0; j <= fim; j++) { 
+    for(j = 0; j <= fim; j++)
         printf("%d ",vet[j]);
-    }
         
     return 0;
 }
